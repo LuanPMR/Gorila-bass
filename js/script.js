@@ -48,8 +48,34 @@ class Gorila {
     this.stamina = Math.min(this.stamina + 12, this.maxStamina);
     log('😴 Gorila descansou e recuperou stamina.');
     this.defending = false;
-    atualizarImagem("descanso"); // Atualiza a imagem para a ação de descanso
+    atualizarImagem("descanso"); 
     return true;
   }
 
+  humanosAtacam() {
+  const vivos = this.humanosRestantes(); 
+  
+  let danoBase = 1; 
+  let danoMaximo = 5; 
+  let danoTotal = 0;
+
+  for (let i = 0; i < vivos; i++) {
+    if (Math.random() < 0.06) { 
+      danoTotal += Math.floor(Math.random() * (danoMaximo - danoBase + 1)) + danoBase;
+    }
+  }
+
+  if (this.defending) {
+    danoTotal = Math.floor(danoTotal / 2);
+  }
+
+  danoTotal = Math.max(1, danoTotal);
+
+  this.hp = Math.max(0, this.hp - danoTotal);
+  
+  log(`⚔️ Humanos atacaram e causaram ${danoTotal} de dano ao gorila.`);
+  
+  this.defending = false; 
+  atualizarImagem("inicio"); 
+}
 }
