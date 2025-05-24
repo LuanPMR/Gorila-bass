@@ -46,7 +46,7 @@ class Gorila {
 
   rest() {
     this.stamina = Math.min(this.stamina + 12, this.maxStamina);
-    log('😴 Gorila descansou e recuperou stamina.');
+    log('Gorila descansou e recuperou stamina.');
     this.defending = false;
     atualizarImagem("descanso"); 
     return true;
@@ -73,9 +73,35 @@ class Gorila {
 
   this.hp = Math.max(0, this.hp - danoTotal);
   
-  log(`⚔️ Humanos atacaram e causaram ${danoTotal} de dano ao gorila.`);
+  log(`Humanos atacaram e causaram ${danoTotal} de dano ao gorila.`);
   
   this.defending = false; 
   atualizarImagem("inicio"); 
 }
 }
+
+const hpEl = document.getElementById('hp');
+const staminaEl = document.getElementById('stamina');
+const humansEl = document.getElementById('humans');
+const logEl = document.getElementById('log');
+const btnAttack = document.getElementById('btn-attack');
+const btnDefend = document.getElementById('btn-defend');
+const btnRest = document.getElementById('btn-rest');
+const btnRestart = document.getElementById('btn-restart');
+const gorilaImg = document.getElementById('gorila-img');
+
+let game;
+
+function atualizarImagem(acao) {
+  const imagens = {
+    inicio: ".img/gorila_parado.png",
+    ataque: ".img/gorila_atacando.png",
+    defesa: ".img/defesa_gorila.png",
+    descanso: ".img/cansado_gorila.png",
+    derrota: ".img/gorila_perdeu.png",
+    vitoria: ".img/venceu_gorila.png"
+  };
+
+  gorilaImg.src = imagens[acao];
+}
+
