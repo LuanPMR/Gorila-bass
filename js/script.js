@@ -28,4 +28,20 @@ class Gorila {
     return true;
   }
 
+  defend() {
+  if (this.stamina < 5) {
+    log('Stamina insuficiente para defender!');
+    return false;
+  }
+  
+  this.stamina -= 5; 
+  this.stamina = Math.min(this.stamina + 10, this.maxStamina);
+  
+  this.defending = true; 
+  log('Gorila está se defendendo! Ele reduzirá o dano recebido e recuperará um pouco de stamina.');
+  
+  atualizarImagem("defesa");
+  return true;
+  }
+
 }
