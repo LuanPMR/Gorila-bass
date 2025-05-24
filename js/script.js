@@ -44,4 +44,12 @@ class Gorila {
   return true;
   }
 
+  rest() {
+    this.stamina = Math.min(this.stamina + 12, this.maxStamina);
+    log('😴 Gorila descansou e recuperou stamina.');
+    this.defending = false;
+    atualizarImagem("descanso"); // Atualiza a imagem para a ação de descanso
+    return true;
+  }
+
 }
