@@ -135,3 +135,14 @@ function turno(actionFn) {
     if (s2) end(s2);
   }, 500);
 }
+
+function end(status) {
+  if (status === 'win') {
+    log('Parabéns! O gorila derrotou todos os humanos!');
+    atualizarImagem("vitoria");
+  } else {
+    log('O gorila foi derrotado! Fim de jogo.');
+    atualizarImagem("derrota");
+  }
+  btnAttack.disabled = btnDefend.disabled = btnRest.disabled = true;
+}
