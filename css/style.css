@@ -1,0 +1,27 @@
+body {
+  background: #eafaf1;
+  font-family: monospace, monospace;
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px #0001;
+  text-align: center;
+}
+
+h1 {
+  color: #38761d;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+
+
+footer {
+  text-align: center;
+  color: #38761d;
+  font-size: .9rem;
+  margin-top: 1.5rem;
+}
