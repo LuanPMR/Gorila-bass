@@ -105,3 +105,33 @@ function atualizarImagem(acao) {
   gorilaImg.src = imagens[acao];
 }
 
+function log(msg) {
+  const p = document.createElement('p');
+  p.textContent = msg;
+  logEl.appendChild(p);
+  logEl.scrollTop = logEl.scrollHeight;
+}
+
+function render() {
+  hpEl.textContent = `${game.hp} / ${game.maxHp}`;
+  staminaEl.textContent = `${game.stamina} / ${game.maxStamina}`;
+  humansEl.textContent = game.humanosRestantes();
+}
+
+function turno(actionFn) {
+  if (!actionFn()) return;
+  salvarProgresso();
+  render(); 
+  
+  const status = game.isOver();
+  if (status) return end(status);
+
+  setTimeout(() => {
+    game.humanosAtacam();
+    salvarProgresso();
+    render(); 
+    
+    const s2 = game.isOver();
+    if (s2) end(s2);
+  }, 500);
+}
