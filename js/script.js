@@ -52,6 +52,16 @@ class Gorila {
     return true;
   }
 
+   humanosRestantes() {
+    return this.humans.filter(x => x).length;
+  }
+
+  isOver() {
+    if (this.hp <= 0) return 'lose';
+    if (this.humanosRestantes() === 0) return 'win';
+    return null;
+  }
+
   humanosAtacam() {
   const vivos = this.humanosRestantes(); 
   
