@@ -17,6 +17,12 @@ h1 {
   letter-spacing: 1px;
 }
 
+#status {
+  position: relative; /* Mantém tudo centralizado */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 
 footer {
