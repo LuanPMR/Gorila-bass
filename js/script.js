@@ -146,3 +146,30 @@ function end(status) {
   }
   btnAttack.disabled = btnDefend.disabled = btnRest.disabled = true;
 }
+
+function salvarProgresso() {
+  localStorage.setItem('gameState', JSON.stringify(game));
+}
+
+function carregarProgresso() {
+  const data = localStorage.getItem('gameState');
+  game = data ? Object.assign(new Gorila(), JSON.parse(data)) : new Gorila();
+}
+
+function start() {
+  carregarProgresso();
+  logEl.innerHTML = '';
+  btnAttack.disabled = btnDefend.disabled = btnRest.disabled = false;
+  atualizarImagem("inicio");
+  render();
+}
+
+btnAttack.onclick = () => turno(() => game.attack());
+btnDefend.onclick = () => turno(() => game.defend());
+btnRest.onclick = () => turno(() => game.rest());
+btnRestart.onclick = () => {
+  localStorage.removeItem('gameState');
+  start();
+};
+
+window.onload = start;
